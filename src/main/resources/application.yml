@@ -1,0 +1,24 @@
+server:
+  port: 8090
+
+spring:
+  cloud:
+    stream:
+      default-binder: kafka
+      bindings:
+        output:
+          destination: srisai_producer_topic
+          content_type: application/json
+#        input:
+#          destination: srisai_producer_topic
+#          content_type: application/json
+
+      kafka:
+        binder:
+          required-acks: -1
+          brokers: localhost:9092
+
+management:
+  health:
+    binders:
+      enabled: true
